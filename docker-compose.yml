@@ -1,0 +1,20 @@
+version: '2.4'
+services:
+  filink-rsync:
+    image: 'odnsol-jenkins.fiberhome.com:5000/basepart/filink-rsync:1.0'
+    restart: always
+    privileged: true
+    tty: true
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - './rsyncd.conf:/etc/rsyncd.conf'
+      - './confxml.xml:/app/local/sersync/confxml.xml'
+      - '/data/rsync:/syncdir'
+    ports:
+      - '873:873'
+    environment:
+      target_host: 192.168.8.110   # 例如在A服务器部署就填写B服务器iP,在B服务器部署就填写A服务器ip地址（由此才可以实现双向传输数据）
+    network_mode: host
+    container_name: filink-rsync
+networks:
+  filink-net: null
