@@ -1,7 +1,7 @@
 # 基于rsync和sersync制作高效数据同步docker镜像
+参考资料：https://github.com/wsgzao/sersync
+
 基于rsync和sersync构建docker镜像，用于实现高效的数据实时同步架构。
-
-
 
 ## 1，前言
 
